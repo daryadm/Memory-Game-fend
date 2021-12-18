@@ -8,7 +8,6 @@ html {
 	box-sizing: inherit;
 }
 
-html,
 body {
 	width: 100%;
 	height: 100%;
@@ -18,7 +17,6 @@ body {
 
 body {
 	background: #ffffff;
-	font-family: 'Permanent Marker', cursive;
 	font-size: 16px;
 }
 
@@ -30,7 +28,7 @@ body {
 }
 
 h1 {
-	font-family: 'Gloria Hallelujah', cursive;
+	
 }
 
 
@@ -38,36 +36,36 @@ h1 {
  * Styles for the deck of cards
  */
 
-
-.deck {
-	width: 85%;
-	background: #716F71;
-	padding: 1rem;
-	border-radius: 4px;
-	box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
-	margin: 0 0 3em;
+ .square {
+    float:left;
+    position: relative;
+    width: 30%;
+    padding-bottom : 30%; /* = width for a 1:1 aspect ratio */
+    margin:1.66%;
+    background-color:#1E1E1E;
+    overflow:hidden;
 }
 
-.deck .card {
-	height: 3.7rem;
-	width: 3.7rem;
-	margin: 0.2rem 0.2rem;
-	background: #141214;;
-	font-size: 0;
-	color: #ffffff;
-	border-radius: 5px;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+.content {
+    position:absolute;
+    height:90%; /* = 100% - 2*5% padding */
+    width:90%; /* = 100% - 2*5% padding */
+    padding: 5%;
+    
+}
+.table{
+    display:table;
+    width:100%;
+    height:100%;
 }
 
-.deck .card.open {
+.table-cell {
+	display:table-cell;
+    vertical-align:middle;
+	color: white;
+}
+
+.card.open {
 	transform: rotateY(0);
 	background: #02b3e4;
 	cursor: default;
@@ -79,24 +77,6 @@ h1 {
 
 .deck .card.show {
 	font-size: 33px;
-}
-
-.deck .card.match {
-	cursor: default;
-	background: #E5F720;
-	font-size: 33px;
-	animation-name: rubberBand;
-	-webkit-backface-visibility: visible !important;
-	backface-visibility: visible !important;
-	animation-duration: .75s;
-}
-
-.deck .card.unmatched {
-	animation-name: pulse;
-	-webkit-backface-visibility: visible !important;
-	backface-visibility: visible !important;
-	animation-duration: .75s;
-	background: #e2043b;
 }
 
 .deck .card.disabled {
@@ -115,37 +95,10 @@ h1 {
 	margin-bottom: 10px;
 }
 
-.score-panel .stars {
-	margin: 0;
-	padding: 0;
-	display: inline-block;
-	margin: 0 5px 0 0;
-}
-
-.score-panel .stars li {
-	list-style: none;
-	display: inline-block;
-}
-
 .score-panel .restart {
 	float: right;
 	cursor: pointer;
 }
-
-.fa-star {
-	color: #FFD700;
-}
-
-.timer {
-	display: inline-block;
-	margin: 0 1rem;
-}
-
-
-/*
- * Styles for congratulations modal
- */
-
 
 .overlay {
 	position: fixed;
