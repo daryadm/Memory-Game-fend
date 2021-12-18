@@ -1,6 +1,20 @@
 // cards array holds all cards
 let card = document.getElementsByClassName("card");
 let cards = [...card];
+const trueList = ["регрессивный гипноз", "аутогенная тренировка", "контакт с внеземными цивилизациями",
+    "молитва и пост", "религиозная терапия", "парные танцы", "инсулинокоматозная терапия", "лагеря конверсионной терапии",
+    "гипноз", "сексуализированное насилие", "психоанализ", "снятие порчи", "изгнание джиннов", "заговоры",
+    "свингерский секс", "обращение к «Высшему Я»", "отчитка", "мастурбация", "причастие", "просмотр гетеро порнофильмов",
+    "антидепрессанты", "«женское обрезание»", "групповая психотерапия", "трудотерапия", "чтение книги «Мужчины с Марса, женщины с Венеры»",
+    "нейролептики"
+];
+
+const falseList = ["прослушивание гимна РФ", "иппотерапия", "лоботомия", "наркотические вещества",
+    "фунготерапия", "электросудорожная терапия", "гормонотерапия", "общение с душами ушедших", "кастрация",
+    "лобная лейкотомия", "езда на велосипеде", "аверсивная терапия", "беременность и роды", "приложение подорожника", "концентрационные лагеря",
+    "специальная диета", "музыкотерапия", "расслабляющие ванны", "ректальные свечи", "имплантация яичек трупов", "курсы этического развития от Мизулиной",
+    "удерживающая терапия"
+];
 
 // deck of all cards in game
 const deck = document.getElementById("card-deck");
@@ -13,6 +27,22 @@ let modal = document.getElementById("popup1")
 
 // array for opened cards
 var openedCards = [];
+
+function chooseRandomIndices(array, numberOfChosen) {
+    let randomIndices = [];
+    while (randomIndices.length < numberOfChosen) {
+        randomIndex = Math.floor(Math.random() * array.length + 1);
+        if (!randomIndices.includes(randomIndex)) {
+            randomIndices.push(randomIndex);
+        }
+    }
+    return randomIndices;
+}
+
+let daIds = chooseRandomIndices(trueList, 3);
+let netIds = chooseRandomIndices(falseList, 6);
+
+
 
 
 // @description shuffles cards
