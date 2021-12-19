@@ -17,7 +17,7 @@ body {
 
 body {
 	background: #ffffff;
-	font-size: 16px;
+	font-size: 1.5em;
 }
 
 .container {
@@ -28,10 +28,11 @@ body {
 }
 
 h1 {
+	font-size: 1em;
 	
 }
 .deck {
-	background-color: #333333;
+	background-color: #333;
 }
 
 .square {
@@ -85,18 +86,9 @@ h1 {
 	color: white;
 }
 
-.deck .card.show {
-	font-size: 33px;
-}
-
 .deck .table-cell.disabled {
 	pointer-events: none;
 }
-
-
-/*
- * Styles for the Score Panel
- */
 
 
 .score-panel {
@@ -210,36 +202,6 @@ h1 {
 	}
 }
 
-@keyframes rubberBand {
-	from {
-		transform: scale3d(1, 1, 1);
-	}
-
-	30% {
-		transform: scale3d(1.25, 0.75, 1);
-	}
-
-	40% {
-		transform: scale3d(0.75, 1.25, 1);
-	}
-
-	50% {
-		transform: scale3d(1.15, 0.85, 1);
-	}
-
-	65% {
-		transform: scale3d(.95, 1.05, 1);
-	}
-
-	75% {
-		transform: scale3d(1.05, .95, 1);
-	}
-
-	to {
-		transform: scale3d(1, 1, 1);
-	}
-}
-
 @keyframes pulse {
 	from {
 		transform: scale3d(1, 1, 1);
@@ -276,12 +238,11 @@ h1 {
 
 @media (min-width: 768px) {
 	.container {
-		font-size: 22px;
+		font-size: 1em;
 	}
 
 	.deck {
 		width: 660px;
-		height: 680px;
 	}
 
 	.deck .table-cell {
