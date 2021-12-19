@@ -1,5 +1,6 @@
 let cell = document.getElementsByClassName("table-cell");
 let cells = [...cell];
+let openedTrueCards = [];
 const trueList = ["регрессивный гипноз", "аутогенная тренировка", "контакт с внеземными цивилизациями",
     "молитва и пост", "религиозная терапия", "парные танцы", "инсулинокоматозная терапия", "лагеря конверсионной терапии",
     "гипноз", "сексуализированное насилие", "психоанализ", "снятие порчи", "изгнание джиннов", "заговоры",
@@ -63,15 +64,12 @@ function startGame() {
     let netObjs = formPracticeObj(netIds, "falseList");
     let all = daObjs.concat(netObjs);
     squares = shuffle(all);
+    openedTrueCards = [];
     for (let i = 0; i < cells.length; i++) {
+        cells[i].classList.remove("da", "net", "disabled");
         cells[i].innerText = squares[i]["list"] == "trueList" ? trueList[squares[i]["list_id"]] : falseList[squares[i]["list_id"]];
     }
 }
-
-// remove all exisiting classes from each card
-//cards[i].classList.remove("show", "open", "match", "disabled");
-// attach corresponding item to each square
-
 
 // @description toggles open and show class to display cards
 var displayCard = function () {
@@ -81,44 +79,22 @@ var displayCard = function () {
 };
 
 
-// @description add opened cards to OpenedCards list and check if cards are match or not
-function cardOpen() {
-    openedCards.push(this);
-    var len = openedCards.length;
-    if (len === 2) {
-        moveCounter();
-        if (openedCards[0].type === openedCards[1].type) {
-            matched();
-        } else {
-            unmatched();
+// @description add opened cards to openedTrueCards list and check if cards are match or not
+function cardCheck() {
+    if (squares[this.id].list == "trueList") {
+        this.parentElement.parentElement.parentElement.classList.add("da");
+        openedTrueCards.push(this.id);
+        this.classList.add("disabled");
+        let len = openedTrueCards.length;
+        if (len == 3) {
+            congratulations();
         }
+    } else {
+        this.parentElement.parentElement.parentElement.classList.add("net");
     }
 };
 
-
-// @description disable cards temporarily
-function disable() {
-    Array.prototype.filter.call(cards, function (card) {
-        card.classList.add('disabled');
-    });
-}
-
-
-// @description enable cards and disable matched cards
-function enable() {
-    Array.prototype.filter.call(cards, function (card) {
-        card.classList.remove('disabled');
-        for (var i = 0; i < matchedCard.length; i++) {
-            matchedCard[i].classList.add("disabled");
-        }
-    });
-}
-
-
-// @description congratulations when all cards match, show modal and moves, time and rating
 function congratulations() {
-    //if (matchedCard.length == 16) {
-    // show congratulations modal
     modal.classList.add("show");
     //closeicon on modal
     closeModal();
@@ -141,7 +117,7 @@ function playAgain() {
 // loop to add event listeners to each card
 for (var i = 0; i < cells.length; i++) {
     cell = cells[i];
-    cell.addEventListener("click", displayCard);
-    cell.addEventListener("click", cardOpen);
-    cell.addEventListener("click", congratulations);
+    //cell.addEventListener("click", displayCard);
+    cell.addEventListener("click", cardCheck);
+    //cell.addEventListener("click", congratulations);
 };
