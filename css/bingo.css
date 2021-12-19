@@ -30,13 +30,7 @@ body {
 h1 {
 	
 }
-
-
-/*
- * Styles for the deck of cards
- */
-
- .square {
+.square {
     float:left;
     position: relative;
     width: 30%;
