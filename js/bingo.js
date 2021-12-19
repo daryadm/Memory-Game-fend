@@ -66,7 +66,7 @@ function startGame() {
     squares = shuffle(all);
     openedTrueCards = [];
     for (let i = 0; i < cells.length; i++) {
-        cells[i].classList.remove("da", "net", "disabled");
+        cells[i].parentElement.parentElement.parentElement.classList.remove("da", "net", "disabled");
         cells[i].innerText = squares[i]["list"] == "trueList" ? trueList[squares[i]["list_id"]] : falseList[squares[i]["list_id"]];
     }
 }
@@ -83,8 +83,10 @@ var displayCard = function () {
 function cardCheck() {
     if (squares[this.id].list == "trueList") {
         this.parentElement.parentElement.parentElement.classList.add("da");
-        openedTrueCards.push(this.id);
-        this.classList.add("disabled");
+        this.parentElement.parentElement.parentElement.classList.add("disabled");
+        if (!openedTrueCards.includes(this.id)) {
+            openedTrueCards.push(this.id);
+        }
         let len = openedTrueCards.length;
         if (len == 3) {
             congratulations();
