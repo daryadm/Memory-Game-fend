@@ -2,15 +2,8 @@
 Размер плитки
 шрифты с сайта
 
-
-
-true list
-false list
-
 on restart or shuffle randomly choose 3 from the true list and 6 from the false list
-function chooseRandomly(list, number_of_cards) {
-    return list of indices
-}
+
 
 combine two lists in dict [index: list_name_, index: list_name]
 shuffle the combined list

@@ -5,7 +5,7 @@ html {
 *,
 *::before,
 *::after {
-	box-sizing: inherit;
+	box-sizing: border-box;
 }
 
 body {
@@ -17,7 +17,7 @@ body {
 
 body {
 	background: #ffffff;
-	font-size: 1.5em;
+	font-size: 1.2em;
 }
 
 .container {
@@ -29,10 +29,10 @@ body {
 
 h1 {
 	font-size: 1em;
-	
 }
 .deck {
 	background-color: #333;
+	width: 40%;
 }
 
 .square {
@@ -43,7 +43,8 @@ h1 {
     margin:1.66%;
     background-color:#f3f70f;
 	border-radius: 5%;
-    overflow:hidden;
+	overflow: hidden;
+    overflow-wrap: anywhere;
 }
 
 .content {
@@ -123,7 +124,7 @@ h1 {
 	padding: 20px;
 	background: #ffffff;
 	border-radius: 5px;
-	width: 85%;
+	width: 60%;
 	position: relative;
 	transition: all 5s ease-in-out;
 }
@@ -219,35 +220,33 @@ h1 {
 
 /****** Media queries
 ***************************/
-
-
-@media (max-width: 320px) {
+@media (max-width: 600px) {
+	.container {
+		font-size: 0.5em;
+	}
+	
 	.deck {
-		width: 85%;
+		width: 96%;
 	}
 
-	.deck .table-cell {
-		height: 4.7rem;
-		width: 4.7rem;
-	}
 }
 
 
 /* For Tablets and larger screens
 ****************/
 
-@media (min-width: 768px) {
+@media (max-width: 992px) {
 	.container {
-		font-size: 1em;
+		font-size: 0.75em;
 	}
 
 	.deck {
-		width: 660px;
+		width: 85%;
 	}
 
 	.deck .table-cell {
-		height: 125px;
-		width: 125px;
+		height: 2rem;
+		width: 2rem;
 	}
 
 	.popup {
